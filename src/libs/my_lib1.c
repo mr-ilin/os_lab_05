@@ -12,12 +12,13 @@ void _swap(int *lhs, int *rhs)
     *rhs = tmp; 
 } 
 
+// Пузырек
 int* sort(int* array) {
-    int n = array[0];
-    for (int i = 1; i < n; ++i) {
+    int n = array[0] ;
+    for (int i = 1; i < n - 1; ++i) {
         for (int j = 1; j < n-i; ++j) {
             if (array[j] > array[j+1]) {
-                _swap(&array[i], &array[j+1]);
+                _swap(&array[j], &array[j+1]);
             }
         }
     }
