@@ -89,6 +89,7 @@ int main() {
     char** strs = NULL;
     size_t size = 0;
     int dl_num = 1;
+    printf("=== Using %s ===\n", DL1);
 
     while (res_scanf != EOF) {
         printf("Enter commad\n");
@@ -111,7 +112,7 @@ int main() {
                     return ERR_DL_SYM;
                 }
                 dl_num = 2;
-                printf("Switched to %s\n", DL2);
+                printf("=== Switched to %s ===\n", DL2);
             } else {
                 e  = (float (*)(int))dlsym(dl1_handle, "e");
                 error = dlerror();
@@ -126,7 +127,7 @@ int main() {
                     return ERR_DL_SYM;
                 }
                 dl_num = 1;
-                printf("Switched to %s\n", DL1);
+                printf("=== Switched to %s ===\n", DL1);
             }
 
         } else if (!strcmp(cmd, "1")) {
@@ -137,7 +138,7 @@ int main() {
             }
             char* endptr = NULL;
             int num = strtoimax(strs[1], &endptr, 10);
-            if (!endptr) {
+            if (strcmp(endptr, "")) {
                 printf("Error: invalid int value = %s\n", strs[1]);
                 exit(ERR_INV_INT);
             }
@@ -150,10 +151,11 @@ int main() {
             (*str_array_to_int)(&strs[1], &nums[1], size-1); // DL1
             (*sort)(nums);
 
+            printf("arrray = {");
             for (size_t i = 1; i < size; i++) {
                 printf("%d ", nums[i]);
             }
-            printf("\n");
+            printf("}\n");
 
         } else if (res_scanf != EOF) {
             printf("Invalid cmd: \"%s\"\n", cmd);

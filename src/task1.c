@@ -29,7 +29,7 @@ int main() {
             }
             char* endptr = NULL;
             int num = strtoimax(strs[1], &endptr, 10);
-            if (!endptr) {
+            if (strcmp(endptr, "")) {
                 printf("Error: invalid int value = %s\n", strs[1]);
                 exit(ERR_INV_INT);
             }
@@ -42,10 +42,11 @@ int main() {
             str_array_to_int(&strs[1], &nums[1], size-1); // DL1
             sort(nums);
 
+            printf("arrray = {");
             for (size_t i = 1; i < size; i++) {
-                printf("%d ", nums[i]);
+                printf("%d, ", nums[i]);
             }
-            printf("\n");
+            printf("}\n");
 
         } else if (res_scanf != EOF) {
             printf("Invalid cmd: \"%s\"\n", cmd);
