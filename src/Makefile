@@ -45,20 +45,5 @@ $(SO_LIB2) : $(OBJ_LIB2)
 $(OBJ_LIB2) : $(SRC_LIB2)
 	$(CC) $(CC_LIB_FLAGS) $^
 
-# gcc -c -fPIC hello.c -o hello.o
-# gcc hello.o -shared -o libhello.so
-
-# This is a colon separated list of directories that contain libraries. 
-# The dynamic linker searches these directories before it searches the default locations for libraries. 
-# It allows you to test new versions of existing libraries.
-
-# OBJ=$(SRC:.cpp=.o)
-
-# $(EXECUTABLE): $(OBJ)
-# 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
-	
-# .cpp.o:
-# 	$(CC) $(CFLAGS) -c $< -o $@ $(LDFLAGS)
-
 clean:
 	rm -f *.o *.so $(EXECUTABLE1) $(EXECUTABLE2)
